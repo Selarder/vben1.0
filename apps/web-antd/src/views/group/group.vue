@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { reactive, ref ,computed ,toRaw} from 'vue';
-
 import { Form } from 'ant-design-vue';
 
+import {processedClassGroupList} from '#/types/api/group.ts'
 import { fullGroupData, classGroupData} from '#/types/group/newGroupData'
 import type {gradeGroup} from '#/types/group/newGroup'
 
 import {
   classColumns,
-  classGroupList,
   personalColumns,
   positionColumns,
 } from './group';
+
 
 const activeKey = ref('classGroup');
 const open = ref(false);
@@ -136,7 +136,7 @@ const handleChange = () => {
       </div>
     </div>
     <div v-if="activeKey === 'classGroup'">
-      <a-table :columns="classColumns" :data-source="classGroupList">
+      <a-table :columns="classColumns" :data-source="processedClassGroupList">
         <template #bodyCell="{ column }">
           <template v-if="column.key === 'operation'">
             <a>修改</a>

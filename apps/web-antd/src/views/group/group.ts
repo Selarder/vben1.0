@@ -1,7 +1,7 @@
 const classColumns = [
   { title: '序号', dataIndex: 'index', key: 'index' },
-  { title: '班级群组名', dataIndex: 'classGroupName', key: 'classGroupName' },
-  { title: '包含班级', dataIndex: 'includedClasses', key: 'includedClasses' },
+  { title: '班级群组名', dataIndex: 'groupName', key: 'groupName' },
+  { title: '包含班级', dataIndex: 'groupMember', key: 'groupMember' },
   { title: '操作', key: 'operation' },
 ];
 const positionColumns = [
