@@ -7,8 +7,19 @@
     "forgetPassword": "忘记密码"
   },
   "dashboard": {
-    "title": "概览",
+    "dashboard": "仪表盘",
     "analytics": "分析页",
     "workspace": "工作台"
+  },
+  "notice": {
+    "notice": "通知",
+    "confirm": "确认",
+    "noticedetail": "通知详情",
+    "filedetail": "文件详情",
+    "noticelist": "通知列表",
+    "noticepublish": "发布通知"
+  },
+  "group": {
+    "groupmanagement": "群组管理"
   }
 }

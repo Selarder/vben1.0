@@ -7,8 +7,19 @@
     "forgetPassword": "Forget Password"
   },
   "dashboard": {
-    "title": "Dashboard",
+    "dashboard": "Dashboard",
     "analytics": "Analytics",
     "workspace": "Workspace"
+  },
+  "notice": {
+    "notice": "Notice",
+    "confirm": "Confirm",
+    "noticedetail": "Notice Detail",
+    "filedetail": "File Detail",
+    "noticelist": "Notice List",
+    "noticepublish": "Publish Notice"
+  },
+  "group": {
+    "groupmanagement": "Group Management"
   }
 }

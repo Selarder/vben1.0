@@ -188,10 +188,13 @@
   ],
 
   "github.copilot.enable": {
-    "*": true,
-    "markdown": true,
+    "*": false,
     "plaintext": false,
-    "yaml": false
+    "markdown": true,
+    "scminput": false,
+    "typescript": true,
+    "yaml": false,
+    "vue": false
   },
 
   "cssVariables.lookupFiles": ["packages/core/base/design/src/**/*.css"],
@@ -237,5 +240,6 @@
     "nolebase",
     "rollup",
     "vitest"
-  ]
+  ],
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": true
 }
