@@ -5,13 +5,13 @@ import { $t } from '#/locales';
 
 const routes: RouteRecordRaw[] = [
   {
-    name: 'Dashboard',
-    path: '/Dashboard',
-    component:()=>import('#/views/dashboard/dashboard.vue'),
+    name: 'Receipt',
+    path: '/receipt',
+    component:()=>import('#/views/receipt/receipt.vue'),
     meta: {
       icon: 'mdi:home',
-      title: $t('page.dashboard.dashboard'),
-      order:0
+      title: $t('page.receipt.receipt'),
+      order:12
     },
   },
 ];

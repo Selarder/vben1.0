@@ -21,5 +21,8 @@
   },
   "group": {
     "groupmanagement": "群组管理"
+  },
+  "receipt":{
+    "receipt":"收集表"
   }
 }

@@ -1,7 +1,10 @@
 <script setup lang="ts">
-// import { useTable } from "/@/components/Table";
-import { ref, reactive } from "vue";
-import { noticeListData, noticeListColumns } from "#/types/notice/list";
+import { ref, onMounted } from "vue";
+import { getNoticeList } from "#/api/notice";
+import { processedNoticeListData } from "#/utils/notice";
+import { noticeListColumns } from "#/views/notice/notice";
+import type { TablenoticeList } from "#/types/api/notice.d";
+import { deleteNotice } from "#/api/notice";
 
 const searchText = ref("");
 
@@ -12,6 +15,28 @@ const focus = () => {
 
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
+};
+
+//一.渲染通知列表
+const noticeListData = ref<TablenoticeList[]>([]);
+const UseNoticeListData = async () => {
+  // 动态导入API避免循环依赖（如果项目存在依赖链）
+  const rawData = await getNoticeList();
+  noticeListData.value = processedNoticeListData(rawData);
+  // console.log("UsePersonGroupListData执行");
+};
+onMounted(UseNoticeListData);
+
+//删除通知
+const showDeleteModal = ref(false);
+// 存储当前要删除的noticeId
+const currentNoticeId = ref(null);
+const handleDelete = () => {
+  if (currentNoticeId.value) {
+    console.log("handleDelete");
+    deleteNotice(currentNoticeId.value);
+  }
+  showDeleteModal.value = false;
 };
 </script>
 
@@ -52,11 +77,29 @@ const handleChange = (value: string) => {
     <div class="show-list-container">
       <div v-if="selectValue === '全部'">
         <a-table :columns="noticeListColumns" :data-source="noticeListData">
-          <template #bodyCell="{ column }">
+          <template #bodyCell="{ column, record }">
             <template v-if="column.key === 'operation'">
-              <router-link to="/notice/detail">
-                <a-button type="primary">查看</a-button>
+              <router-link :to="`/notice/detail/${record.key}`">
+                <a type="primary">查看</a>
               </router-link>
+              <a
+                @click="
+                  () => {
+                    currentNoticeId = record.key;
+                    showDeleteModal = true;
+                  }
+                "
+                >删除</a
+              >
+              <a-modal
+                v-model:open="showDeleteModal"
+                title="确认删除"
+                ok-text="确认"
+                cancel-text="取消"
+                @ok="handleDelete"
+              >
+                <p>确定要删除 {{ record.noticeTitle }} ？此操作不可撤销。</p>
+              </a-modal>
             </template>
           </template>
         </a-table>

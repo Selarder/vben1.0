@@ -34,7 +34,7 @@ const routes: RouteRecordRaw[] = [
         },
       },
       {
-        path: '/notice/detail',
+        path: '/notice/detail/:noticeId',
         name: 'NoticeDetail',
         component: () => import('#/views/notice/detail.vue'),
         meta: {

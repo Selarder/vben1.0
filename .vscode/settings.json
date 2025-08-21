@@ -192,7 +192,7 @@
     "plaintext": false,
     "markdown": true,
     "scminput": false,
-    "typescript": true,
+    "typescript": false,
     "yaml": false,
     "vue": false
   },

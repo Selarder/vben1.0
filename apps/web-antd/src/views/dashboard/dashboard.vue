@@ -1,3 +1,3 @@
 <template>
-  <h1>filedetail</h1>
+  <h1>仪表盘</h1>
 </template>

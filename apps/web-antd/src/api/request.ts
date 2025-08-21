@@ -19,6 +19,7 @@ import { useAuthStore } from '#/store';
 
 import { refreshTokenApi } from './core';
 
+// 从应用配置中获取 API 的基础 URL，根据环境变量（开发 / 生产）自动适配。
 const { apiURL } = useAppConfig(import.meta.env, import.meta.env.PROD);
 
 function createRequestClient(baseURL: string, options?: RequestClientOptions) {
@@ -79,6 +80,20 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
       successCode: 0,
     }),
   );
+  // 替换原来的defaultResponseInterceptor
+// client.addResponseInterceptor({
+//   fulfilled: (response) => {
+//     const { data } = response;
+//     // 自定义成功逻辑
+//     if (data?.code === 200) {
+//       return data.data; // 直接返回data字段
+//     }
+//     return Promise.reject(data); // 其他情况视为错误
+//   },
+//   rejected: (error) => {
+//     return Promise.reject(error);
+//   }
+// });
 
   // token过期的处理
   client.addResponseInterceptor(
@@ -111,3 +126,9 @@ export const requestClient = createRequestClient(apiURL, {
 });
 
 export const baseRequestClient = new RequestClient({ baseURL: apiURL });
+
+// export const requestClient = createRequestClient('https://mockapi.eolink.com/FXvYJaHf79ed0b8eb23474987e8c56ffdd07128c5ff9888', {
+//   responseReturn: 'data',
+// });
+
+// export const baseRequestClient = new RequestClient({ baseURL:'https://mockapi.eolink.com/FXvYJaHf79ed0b8eb23474987e8c56ffdd07128c5ff9888' });
